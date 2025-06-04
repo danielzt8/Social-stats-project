@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparar Canales - SocialStats</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+  <!-- Header -->
+  <header class="bg-red-600 text-white p-4">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">SocialStats</h1>
+      <nav class="space-x-4">
+        <a href="#" class="hover:underline">YouTube</a>
+        <a href="#" class="hover:underline">TikTok</a>
+        <a href="#" class="hover:underline">Instagram</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Comparar Creadores (Horizontal) -->
+  <section class="max-w-6xl mx-auto my-6 p-4 bg-white rounded-lg shadow-md">
+    <h2 class="text-xl font-semibold mb-4">Comparar Creadores</h2>
+    <div class="flex overflow-x-auto space-x-4" id="creatorsContainer">
+      <!-- Canal 1 -->
+      <div class="flex items-center space-x-4 bg-gray-100 p-4 rounded-lg min-w-[300px]">
+        <div class="w-16 h-16 bg-gray-200 rounded-full overflow-hidden">
+          <img src="https://via.placeholder.com/150" alt="Canal 1" class="w-full h-full object-cover">
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold">@CanalEjemplo1</h3>
+          <p class="text-sm text-gray-600">104M Suscriptores</p>
+          <p class="text-sm text-gray-600">75B Vistas</p>
+          <p class="text-sm text-gray-600">3.2K Videos</p>
+        </div>
+      </div>
+
+      <!-- Botón para agregar canal -->
+      <button onclick="showSearch()" class="flex items-center justify-center bg-gray-100 p-4 rounded-lg min-w-[300px] text-gray-500 hover:bg-gray-200 transition">
+        <span>+ Agregar otro canal</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Modal de Búsqueda de Canal -->
+  <div id="searchModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg max-w-sm w-full">
+      <h3 class="text-lg font-semibold mb-4">Buscar Canal</h3>
+      <input type="text" placeholder="Ingresa el nombre del canal..." class="w-full p-2 border rounded mb-4" id="searchInput">
+      <div class="flex justify-end space-x-2">
+        <button onclick="closeSearch()" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Cancelar</button>
+        <button onclick="addChannel()" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">Agregar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script para agregar canales -->
+  <script>
+    function showSearch() {
+      document.getElementById('searchModal').classList.remove('hidden');
+    }
+
+    function closeSearch() {
+      document.getElementById('searchModal').classList.add('hidden');
+    }
+
+    function addChannel() {
+      const channelName = document.getElementById('searchInput').value.trim();
+      if (channelName === "") return;
+
+      const container = document.getElementById('creatorsContainer');
+      const newChannel = document.createElement('div');
+      newChannel.className = "flex items-center space-x-4 bg-gray-100 p-4 rounded-lg min-w-[300px]";
+      newChannel.innerHTML = `
+        <div class='w-16 h-16 bg-gray-200 rounded-full overflow-hidden'>
+          <img src='https://via.placeholder.com/150' alt='Nuevo Canal' class='w-full h-full object-cover'>
+        </div>
+        <div>
+          <h3 class='text-lg font-semibold'>@${channelName}</h3>
+          <p class='text-sm text-gray-600'>-- Suscriptores</p>
+          <p class='text-sm text-gray-600'>-- Vistas</p>
+          <p class='text-sm text-gray-600'>-- Videos</p>
+        </div>
+      `;
+      container.insertBefore(newChannel, container.lastElementChild);
+      closeSearch();
+    }
+  </script>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 py-6 text-center text-sm text-gray-500">
+    <p>© 2025 SocialStats. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
+

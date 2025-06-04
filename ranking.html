@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Stats Ranking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <a href="/index.html">
+            <img src="/images/ModumPro FINAL.png" alt="SocialStats Logo" class="h-10">
+        </a>
+          <nav class="space-x-4">
+            <a href="/index.html" class="text-gray-600 hover:text-black">Inicio</a>
+            <a href="/ranking.html" class="text-gray-600 hover:text-black">Ranking</a>
+            <a href="#" class="text-gray-600 hover:text-black">Contacto</a>
+          </nav>
+        </div>
+      </header>
+      <div class="min-h-screen bg-gray-50 p-6">
+        <!-- Título -->
+        <div class="max-w-6xl mx-auto mb-6">
+          <h1 class="text-2xl font-bold text-gray-800">Top Creadores de YouTube</h1>
+          <p class="text-gray-500 text-sm">Ranking por suscriptores y vistas totales</p>
+        </div>
+      
+        <!-- Filtros estilo moderno -->
+<div class="max-w-6xl mx-auto bg-white p-4 rounded-lg shadow-sm mb-6">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+      <!-- País -->
+      <div>
+        <label class="text-xs text-gray-500 block mb-1">Country</label>
+        <select class="w-full bg-gray-50 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 appearance-none">
+          <option selected>Global</option>
+          <option>Rep. Dominicana</option>
+          <option>USA</option>
+          <option>Corea del Sur</option>
+        </select>
+      </div>
+  
+      <!-- Categoría -->
+      <div>
+        <label class="text-xs text-gray-500 block mb-1">Category</label>
+        <select class="w-full bg-gray-50 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 appearance-none">
+          <option selected>All</option>
+          <option>Entertainment</option>
+          <option>Gaming</option>
+          <option>Education</option>
+          <option>Vlogs</option>
+        </select>
+      </div>
+  
+      <!-- Longitud -->
+      <div>
+        <label class="text-xs text-gray-500 block mb-1">Length</label>
+        <select class="w-full bg-gray-50 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 appearance-none">
+          <option>10</option>
+          <option selected>50</option>
+          <option>100</option>
+        </select>
+      </div>
+  
+      <!-- Filtro -->
+      <div>
+        <label class="text-xs text-gray-500 block mb-1">Filter</label>
+        <select class="w-full bg-gray-50 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 appearance-none">
+          <option selected>Show Everyone</option>
+          <option>Verified Only</option>
+          <option>Popular Creators</option>
+        </select>
+      </div>
+  
+      <!-- Tipo -->
+      <div>
+        <label class="text-xs text-gray-500 block mb-1">Type</label>
+        <select class="w-full bg-gray-50 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 appearance-none">
+          <option selected>Top</option>
+          <option>Fastest Growing</option>
+          <option>New Creators</option>
+        </select>
+      </div>
+  
+      <!-- Orden -->
+      <div>
+        <label class="text-xs text-gray-500 block mb-1">Order By</label>
+        <select class="w-full bg-gray-50 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 appearance-none">
+          <option selected>SB Rank</option>
+          <option>Subscribers</option>
+          <option>Views</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  
+      
+        <!-- Tabla -->
+        <div class="max-w-6xl mx-auto overflow-x-auto bg-white shadow rounded-lg">
+          <table class="w-full table-auto text-sm text-left">
+            <thead class="bg-blue-900 text-white uppercase">
+              <tr>
+                <th class="px-4 py-3">#</th>
+                <th class="px-4 py-3">Calificación</th>
+                <th class="px-4 py-3">Nombre</th>
+                <th class="px-4 py-3 text-right">Suscriptores</th>
+                <th class="px-4 py-3 text-right">Vistas</th>
+                <th class="px-4 py-3 text-right">Videos</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <!-- Fila ejemplo -->
+               <a href="/usuariodetail.html">
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">1st</td>
+                <td class="px-4 py-2 text-blue-600 font-semibold">A++</td>
+                <td class="px-4 py-2 font-medium">@CanalTop1</td>
+                <td class="px-4 py-2 text-right">103M</td>
+                <td class="px-4 py-2 text-right">70.8B</td>
+                <td class="px-4 py-2 text-right">3.14K</td>
+              </tr>
+            </a>
+            <a href="/usuariodetail.html">
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">2nd</td>
+                <td class="px-4 py-2 text-blue-600 font-semibold">A++</td>
+                <td class="px-4 py-2 font-medium">@SierraRhiaFAM</td>
+                <td class="px-4 py-2 text-right">36.1M</td>
+                <td class="px-4 py-2 text-right">44.5B</td>
+                <td class="px-4 py-2 text-right">4.17K</td>
+              </tr>
+            </a>
+            <a href="/usuariodetail.html">
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">3rd</td>
+                <td class="px-4 py-2 text-blue-600 font-semibold">A+</td>
+                <td class="px-4 py-2 font-medium">@DoubleDate</td>
+                <td class="px-4 py-2 text-right">11.2M</td>
+                <td class="px-4 py-2 text-right">12.0B</td>
+                <td class="px-4 py-2 text-right">3.27K</td>
+              </tr>
+            </a>
+              <!-- Agrega más filas hasta el top 10 -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+    
+
+    
+
+      <footer class="bg-gray-100 text-center py-6 text-sm text-gray-500">
+        © 2025 SocialStats. Todos los derechos reservados.
+      </footer>
+    </div>
+</body>
+</html>
