@@ -7,9 +7,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <div class="min-h-screen bg-gray-50 font-sans">
+    <div class="min-h-screen bg-gray-50 font-sans dark:bg-gray-800">
       <!-- Header -->
-      <header class="bg-white shadow sticky top-0 z-50">
+      <header class="bg-white shadow sticky top-0 z-50 dark:bg-gray-800">
         <div
           class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
         >
@@ -17,9 +17,18 @@
             <img
               src="/images/ModumPro FINAL.png"
               alt="SocialStats Logo"
-              class="h-10"
+              class="h-10 dark:hidden"
             />
+<img
+              src="/images/ModumPro blanco.png"
+              alt="SocialStats Logo"
+              class="h-10 hidden dark:block"
+            />
+
           </a>
+          
+            
+        
           <nav class="space-x-4">
             <a href="/index.html" class="text-gray-600 hover:text-black"
               >Inicio</a
