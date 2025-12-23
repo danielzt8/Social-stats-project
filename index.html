@@ -1,266 +1,314 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Social Stats Project</title>
+    <title>Social Stats - Análisis Premium de Redes Sociales</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                50: '#fff1f2',
+                100: '#ffe4e6',
+                500: '#f43f5e', // Rose 500
+                600: '#e11d48', // Rose 600
+                700: '#be123c', // Rose 700
+                900: '#881337', // Rose 900
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Glassmorphism utilities */
+      .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .dark .glass {
+        background: rgba(17, 24, 39, 0.8); /* Gray-900 with opacity */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+    </style>
   </head>
-  <body>
-    <div class="min-h-screen bg-gray-50 font-sans dark:bg-gray-800">
-      <!-- Header -->
-      <header class="bg-white shadow sticky top-0 z-50 dark:bg-gray-800">
-        <div
-          class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
-        >
-          <a href="/index.html">
-            <img
-              src="/images/ModumPro FINAL.png"
-              alt="SocialStats Logo"
-              class="h-10 dark:hidden"
-            />
-<img
-              src="/images/ModumPro blanco.png"
-              alt="SocialStats Logo"
-              class="h-10 hidden dark:block"
-            />
-
-          </a>
-          
-            
+  <body class="bg-slate-50 text-slate-900 font-sans dark:bg-slate-900 dark:text-slate-100 antialiased selection:bg-brand-500 selection:text-white">
+    
+    <!-- Header with Glassmorphism -->
+    <header class="fixed w-full top-0 z-50 glass transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+        <a href="/index.html" class="flex items-center gap-2 group">
+             <!-- Using text logo if image is missing or for better scaling, or keeping img if preferred. Keeping img as per user existing code but refining -->
+             <div class="relative">
+                <img
+                  src="/images/ModumPro FINAL.png"
+                  alt="SocialStats Logo"
+                  class="h-10 dark:hidden transition-transform transform group-hover:scale-105"
+                />
+                <img
+                  src="/images/ModumPro blanco.png"
+                  alt="SocialStats Logo"
+                  class="h-10 hidden dark:block transition-transform transform group-hover:scale-105"
+                />
+             </div>
+        </a>
         
-          <nav class="space-x-4">
-            <a href="/index.html" class="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white"
-              >Inicio</a
-            >
-            <a href="/ranking.html" class="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white"
-              >Ranking</a
-            >
-            <a href="/comparativa.html" class="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white"
-              >Comparar</a
-            >
-            <a href="#" class="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white">Contacto</a>
-          </nav>
-        </div>
-      </header>
+        <nav class="hidden md:flex space-x-8">
+          <a href="/index.html" class="text-sm font-medium text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition-colors">Inicio</a>
+          <a href="/ranking.html" class="text-sm font-medium text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition-colors">Ranking</a>
+          <a href="/comparativa.html" class="text-sm font-medium text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition-colors">Comparar</a>
+          <a href="#" class="text-sm font-medium text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition-colors">Contacto</a>
+        </nav>
 
-      <!-- Hero / Search -->
-      <section
-        class="bg-gradient-to-r from-red-400 to-red-600 text-white py-20"
-      >
-        <div class="max-w-3xl mx-auto text-center px-4">
-          <h2 class="text-4xl font-extrabold mb-4">
-            Analiza estadísticas de tus redes favoritas
-          </h2>
-          <p class="mb-6 text-lg">
-            Consulta estadísticas de YouTube, TikTok, Instagram y más.
+        <!-- Mobile Menu Button (Placeholder) -->
+        <button class="md:hidden text-slate-600 dark:text-slate-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Wrapper to offset fixed header -->
+    <div class="pt-20">
+        
+      <!-- Hero Section -->
+      <section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-32 overflow-hidden">
+        <!-- Abstract Background Shapes -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
+            <div class="absolute -top-24 -left-24 w-96 h-96 bg-brand-600 rounded-full blur-3xl mix-blend-multiply filter"></div>
+            <div class="absolute top-1/2 right-0 w-96 h-96 bg-purple-600 rounded-full blur-3xl mix-blend-multiply filter"></div>
+        </div>
+
+        <div class="relative max-w-4xl mx-auto text-center px-6">
+          <span class="inline-block py-1 px-3 rounded-full bg-brand-500/20 border border-brand-500/30 text-brand-300 text-xs font-semibold tracking-wider uppercase mb-6 backdrop-blur-sm">
+            Estadísticas en Tiempo Real
+          </span>
+          <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+            Analiza el impacto de <br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-purple-400">tus creadores favoritos</span>
+          </h1>
+          <p class="mb-10 text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light">
+            Obtén datos detallados, rankings globales y comparativas de YouTube, TikTok, Instagram y más con precisión profesional.
           </p>
-          <div class="flex justify-center">
-            <input
-              type="text"
-              placeholder="Buscar canal o usuario..."
-              class="w-full max-w-xl p-3 rounded-l-lg text-black focus:outline-none"
-            />
-            <button
-              class="bg-black text-white px-6 py-3 rounded-r-lg hover:bg-gray-800"
-            >
-              Buscar
+          
+          <!-- Search Bar -->
+          <div class="relative max-w-2xl mx-auto group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-brand-500 to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-200"></div>
+            <div class="relative flex bg-white rounded-lg shadow-2xl overflow-hidden">
+                <input
+                    type="text"
+                    placeholder="Buscar canal, usuario (ej. @MrBeast)..."
+                    class="w-full p-4 pl-6 text-slate-700 placeholder-slate-400 focus:outline-none text-lg"
+                />
+                <button class="bg-brand-600 text-white px-8 py-4 font-semibold hover:bg-brand-700 transition-colors flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    Buscar
+                </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Platform Filter Pills -->
+      <section class="py-12 px-6">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-center gap-4">
+            <!-- Active Pill -->
+            <button class="flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 text-red-600 dark:text-red-500 rounded-full shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 border border-slate-100 dark:border-slate-700 ring-2 ring-red-500/20">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                <span class="font-semibold">YouTube</span>
             </button>
-          </div>
+            
+            <!-- Inactive Pill -->
+            <button class="flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 text-slate-500 hover:text-pink-600 rounded-full shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 border border-slate-100 dark:border-slate-700">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+                <span class="font-medium">Instagram</span>
+            </button>
+            
+            <!-- Inactive Pill -->
+            <button class="flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 text-slate-500 hover:text-black hover:dark:text-white rounded-full shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 border border-slate-100 dark:border-slate-700">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z"/></svg>
+                <span class="font-medium">TikTok</span>
+            </button>
         </div>
       </section>
 
-      <!-- Top canales -->
-      <section class="py-16 mx-4">
-        <div class="flex space-x-2">
-<button class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50 transition-all duration-300 flex items-center justify-center space-x-2">
-    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-    </svg>
-    <span>YouTube</span>
-  </button>
-  <button class="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-opacity-50 transition-all duration-300 flex items-center justify-center space-x-2">
-    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
-    </svg>
-    <span>Instagram</span>
-  </button>
-   <button class="px-4 py-2 bg-black text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-opacity-50 transition-all duration-300 flex items-center justify-center">
-   <svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <title>Tiktok</title>
-        <g id="Icon/Social/tiktok-white" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <path d="M38.0766847,15.8542954 C36.0693906,15.7935177 34.2504839,14.8341149 32.8791434,13.5466056 C32.1316475,12.8317108 31.540171,11.9694126 31.1415066,11.0151329 C30.7426093,10.0603874 30.5453728,9.03391952 30.5619062,8 L24.9731521,8 L24.9731521,28.8295196 C24.9731521,32.3434487 22.8773693,34.4182737 20.2765028,34.4182737 C19.6505623,34.4320127 19.0283477,34.3209362 18.4461858,34.0908659 C17.8640239,33.8612612 17.3337909,33.5175528 16.8862248,33.0797671 C16.4386588,32.6422142 16.0833071,32.1196657 15.8404292,31.5426268 C15.5977841,30.9658208 15.4727358,30.3459348 15.4727358,29.7202272 C15.4727358,29.0940539 15.5977841,28.4746337 15.8404292,27.8978277 C16.0833071,27.3207888 16.4386588,26.7980074 16.8862248,26.3604545 C17.3337909,25.9229017 17.8640239,25.5791933 18.4461858,25.3491229 C19.0283477,25.1192854 19.6505623,25.0084418 20.2765028,25.0219479 C20.7939283,25.0263724 21.3069293,25.1167239 21.794781,25.2902081 L21.794781,19.5985278 C21.2957518,19.4900128 20.7869423,19.436221 20.2765028,19.4380839 C18.2431278,19.4392483 16.2560928,20.0426009 14.5659604,21.1729264 C12.875828,22.303019 11.5587449,23.9090873 10.7814424,25.7878401 C10.003907,27.666593 9.80084889,29.7339663 10.1981162,31.7275214 C10.5953834,33.7217752 11.5748126,35.5530237 13.0129853,36.9904978 C14.4509252,38.4277391 16.2828722,39.4064696 18.277126,39.8028054 C20.2711469,40.1991413 22.3382874,39.9951517 24.2163416,39.2169177 C26.0948616,38.4384508 27.7002312,37.1209021 28.8296253,35.4300711 C29.9592522,33.7397058 30.5619062,31.7522051 30.5619062,29.7188301 L30.5619062,18.8324027 C32.7275484,20.3418321 35.3149087,21.0404263 38.0766847,21.0867664 L38.0766847,15.8542954 Z" id="Fill-1" fill="#FFFFFF"></path>
-        </g>
-    </svg>
-    <span>TikTok</span>
-  </button>
+      <!-- Featured Channels (Top 6) -->
+      <section class="max-w-7xl mx-auto px-6 py-12">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-3xl font-bold text-slate-800 dark:text-white">Tendencias en YouTube</h2>
+            <a href="/ranking.html" class="text-brand-600 font-semibold hover:text-brand-700 flex items-center gap-1 group">
+                Ver Ranking Completo 
+                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </a>
         </div>
-          <h3 class="text-2xl font-bold mb-6 text-gray-800">
-            Top 6 Canales de Youtube del Momento
-          </h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Tarjeta de canal -->
-            <a href="/usuariodetail.html">
-              <div
-                class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
-              >
-                <div class="flex items-center space-x-4">
-                  <img
-                    src="/images/IMG_6951.JPG"
-                    alt="Perfil"
-                    class="w-16 h-16 rounded-full object-cover"
-                  />
-                  <div>
-                    <h4 class="font-semibold text-lg">@CanalTop1</h4>
-                    <p class="text-gray-500">15M suscriptores</p>
-                  </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Card Component -->
+          <a href="/usuariodetail.html" class="group">
+            <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700 p-6 flex items-start gap-4">
+              <div class="relative">
+                <img src="/images/IMG_6951.JPG" alt="Profile" class="w-16 h-16 rounded-full object-cover ring-2 ring-slate-100 dark:ring-slate-600 group-hover:ring-brand-500 transition-all"/>
+                <div class="absolute -bottom-1 -right-1 bg-brand-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-white dark:border-slate-800">A++</div>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition-colors">@CanalTop1</h3>
+                <div class="flex items-center gap-2 mt-1">
+                    <span class="text-xs font-semibold bg-red-100 text-red-600 px-2 py-0.5 rounded-md">Entertainment</span>
+                    <span class="text-slate-400 text-xs">• 15M subs</span>
                 </div>
-                <div class="mt-4 text-sm text-gray-600">
-                  Vistas totales: 1.2B<br />
-                  Promedio por video: 500K
+                <div class="mt-4 grid grid-cols-2 gap-4 border-t border-slate-100 dark:border-slate-700 pt-3">
+                    <div>
+                        <p class="text-xs text-slate-500 uppercase tracking-wide">Vistas</p>
+                        <p class="font-semibold text-slate-800 dark:text-slate-200">1.2B</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 uppercase tracking-wide">Videos</p>
+                        <p class="font-semibold text-slate-800 dark:text-slate-200">345</p>
+                    </div>
                 </div>
               </div>
-            </a>
+            </div>
+          </a>
 
-            <a href="/usuariodetail.html">
-              <div
-                class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
-              >
-                <div class="flex items-center space-x-4">
-                  <img
-                    src="/images/IMG_6951.JPG"
-                    alt="Perfil"
-                    class="w-16 h-16 rounded-full object-cover"
-                  />
-                  <div>
-                    <h4 class="font-semibold text-lg">@CanalTop2</h4>
-                    <p class="text-gray-500">15M suscriptores</p>
-                  </div>
+           <!-- Card Component -->
+          <a href="/usuariodetail.html" class="group">
+            <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700 p-6 flex items-start gap-4">
+              <div class="relative">
+                <img src="/images/IMG_6951.JPG" alt="Profile" class="w-16 h-16 rounded-full object-cover ring-2 ring-slate-100 dark:ring-slate-600 group-hover:ring-brand-500 transition-all"/>
+                <div class="absolute -bottom-1 -right-1 bg-green-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-white dark:border-slate-800">A+</div>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition-colors">@CanalTop2</h3>
+                <div class="flex items-center gap-2 mt-1">
+                    <span class="text-xs font-semibold bg-blue-100 text-blue-600 px-2 py-0.5 rounded-md">Gaming</span>
+                    <span class="text-slate-400 text-xs">• 10M subs</span>
                 </div>
-                <div class="mt-4 text-sm text-gray-600">
-                  Vistas totales: 1.2B<br />
-                  Promedio por video: 500K
+                <div class="mt-4 grid grid-cols-2 gap-4 border-t border-slate-100 dark:border-slate-700 pt-3">
+                    <div>
+                        <p class="text-xs text-slate-500 uppercase tracking-wide">Vistas</p>
+                        <p class="font-semibold text-slate-800 dark:text-slate-200">900M</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 uppercase tracking-wide">Videos</p>
+                        <p class="font-semibold text-slate-800 dark:text-slate-200">1.2K</p>
+                    </div>
                 </div>
               </div>
-            </a>
+            </div>
+          </a>
 
-            <a href="/usuariodetail.html">
-              <div
-                class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
-              >
-                <div class="flex items-center space-x-4">
-                  <img
-                    src="/images/IMG_6951.JPG"
-                    alt="Perfil"
-                    class="w-16 h-16 rounded-full object-cover"
-                  />
-                  <div>
-                    <h4 class="font-semibold text-lg">@CanalTop3</h4>
-                    <p class="text-gray-500">15M suscriptores</p>
-                  </div>
+           <!-- Card Component -->
+          <a href="/usuariodetail.html" class="group">
+            <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700 p-6 flex items-start gap-4">
+              <div class="relative">
+                <img src="/images/IMG_6951.JPG" alt="Profile" class="w-16 h-16 rounded-full object-cover ring-2 ring-slate-100 dark:ring-slate-600 group-hover:ring-brand-500 transition-all"/>
+                <div class="absolute -bottom-1 -right-1 bg-brand-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-white dark:border-slate-800">A++</div>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition-colors">@CanalTop3</h3>
+                <div class="flex items-center gap-2 mt-1">
+                    <span class="text-xs font-semibold bg-purple-100 text-purple-600 px-2 py-0.5 rounded-md">Vlogs</span>
+                    <span class="text-slate-400 text-xs">• 8.5M subs</span>
                 </div>
-                <div class="mt-4 text-sm text-gray-600">
-                  Vistas totales: 1.2B<br />
-                  Promedio por video: 500K
+                <div class="mt-4 grid grid-cols-2 gap-4 border-t border-slate-100 dark:border-slate-700 pt-3">
+                    <div>
+                        <p class="text-xs text-slate-500 uppercase tracking-wide">Vistas</p>
+                        <p class="font-semibold text-slate-800 dark:text-slate-200">450M</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 uppercase tracking-wide">Videos</p>
+                        <p class="font-semibold text-slate-800 dark:text-slate-200">201</p>
+                    </div>
                 </div>
               </div>
-            </a>
-            <a href="/usuariodetail.html">
-              <div
-                class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
-              >
-                <div class="flex items-center space-x-4">
-                  <img
-                    src="/images/IMG_6951.JPG"
-                    alt="Perfil"
-                    class="w-16 h-16 rounded-full object-cover"
-                  />
-                  <div>
-                    <h4 class="font-semibold text-lg">@CanalTop4</h4>
-                    <p class="text-gray-500">15M suscriptores</p>
-                  </div>
-                </div>
-                <div class="mt-4 text-sm text-gray-600">
-                  Vistas totales: 1.2B<br />
-                  Promedio por video: 500K
-                </div>
-              </div>
-            </a>
+            </div>
+          </a>
 
-            <a href="/usuariodetail.html">
-              <div
-                class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
-              >
-                <div class="flex items-center space-x-4">
-                  <img
-                    src="/images/IMG_6951.JPG"
-                    alt="Perfil"
-                    class="w-16 h-16 rounded-full object-cover"
-                  />
-                  <div>
-                    <h4 class="font-semibold text-lg">@CanalTop5</h4>
-                    <p class="text-gray-500">15M suscriptores</p>
-                  </div>
-                </div>
-                <div class="mt-4 text-sm text-gray-600">
-                  Vistas totales: 1.2B<br />
-                  Promedio por video: 500K
-                </div>
-              </div>
-            </a>
-            <a href="/usuariodetail.html">
-              <div
-                class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
-              >
-                <div class="flex items-center space-x-4">
-                  <img
-                    src="/images/IMG_6951.JPG"
-                    alt="Perfil"
-                    class="w-16 h-16 rounded-full object-cover"
-                  />
-                  <div>
-                    <h4 class="font-semibold text-lg">@CanalTop6</h4>
-                    <p class="text-gray-500">15M suscriptores</p>
-                  </div>
-                </div>
-                <div class="mt-4 text-sm text-gray-600">
-                  Vistas totales: 1.2B<br />
-                  Promedio por video: 500K
-                </div>
-              </div>
-            </a>
-
-            <!-- Repite más tarjetas según sea necesario -->
-          </div>
+          <!-- More cards would go here -->
+          
         </div>
       </section>
 
-      <!-- Estadísticas globales -->
-      <section class="bg-red-700 py-16">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-          <h3 class="text-2xl font-bold text-white ">Datos globales</h3>
-          <h3 class="text-2xl font-bold text-red-700 mb-4">YouTube</h3>
-          <p class="text-gray-300 mb-8">Actualizados en tiempo real</p>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-gray-700">
-            <div class="text-white">
-              <h4 class="text-3xl font-bold">25M+</h4>
-              <p>Canales Analizados</p>
+      <!-- Global Stats (Modernized) -->
+      <section class="bg-slate-900 py-20 relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-slate-800 rounded-full mix-blend-overlay opacity-20 -mr-20 -mt-20"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-slate-800 rounded-full mix-blend-overlay opacity-20 -ml-20 -mb-20"></div>
+
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+          <h2 class="text-3xl font-bold text-white mb-2">Base de Datos Global</h2>
+          <p class="text-slate-400 mb-12">Monitoreando el pulso de las redes sociales en tiempo real.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-8 rounded-2xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50">
+              <div class="text-4xl font-extrabold text-brand-500 mb-2">25M+</div>
+              <div class="text-slate-300 font-medium">Creadores Rastreados</div>
             </div>
-            <div class="text-white">
-              <h4 class="text-3xl font-bold">10B+</h4>
-              <p>Vistas Totales</p>
+            <div class="p-8 rounded-2xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50">
+              <div class="text-4xl font-extrabold text-brand-500 mb-2">10B+</div>
+              <div class="text-slate-300 font-medium">Vistas Analizadas</div>
             </div>
-            <div class="text-white">
-              <h4 class="text-3xl font-bold">120</h4>
-              <p>Países Alcanzados</p>
+             <div class="p-8 rounded-2xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50">
+              <div class="text-4xl font-extrabold text-brand-500 mb-2">120+</div>
+              <div class="text-slate-300 font-medium">Países Soportados</div>
             </div>
           </div>
         </div>
       </section>
-
+      
       <!-- Footer -->
-      <footer class="bg-gray-100 text-center py-6 text-sm text-gray-500">
-        © 2025 ModumPro. Todos los derechos reservados.
+      <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+                <img src="/images/ModumPro FINAL.png" class="h-8 mb-4 opacity-80 dark:hidden" alt="Logo">
+                <img src="/images/ModumPro blanco.png" class="h-8 mb-4 hidden dark:block" alt="Logo">
+                <p class="text-slate-500 text-sm">
+                    La herramienta líder de análisis para creadores de contenido, marcas y agencias.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold text-slate-900 dark:text-white mb-4">Plataforma</h4>
+                <ul class="space-y-2 text-sm text-slate-500">
+                    <li><a href="#" class="hover:text-brand-600 transition">YouTube</a></li>
+                    <li><a href="#" class="hover:text-brand-600 transition">Instagram</a></li>
+                    <li><a href="#" class="hover:text-brand-600 transition">TikTok</a></li>
+                    <li><a href="#" class="hover:text-brand-600 transition">Twitter / X</a></li>
+                </ul>
+            </div>
+             <div>
+                <h4 class="font-bold text-slate-900 dark:text-white mb-4">Compañía</h4>
+                <ul class="space-y-2 text-sm text-slate-500">
+                    <li><a href="#" class="hover:text-brand-600 transition">Sobre Nosotros</a></li>
+                    <li><a href="#" class="hover:text-brand-600 transition">Contacto</a></li>
+                    <li><a href="#" class="hover:text-brand-600 transition">Privacidad</a></li>
+                    <li><a href="#" class="hover:text-brand-600 transition">Términos</a></li>
+                </ul>
+            </div>
+             <div>
+                <h4 class="font-bold text-slate-900 dark:text-white mb-4">Boletín</h4>
+                <p class="text-xs text-slate-500 mb-4">Recibe las últimas tendencias en tu correo.</p>
+                <div class="flex">
+                    <input type="email" placeholder="Tu email" class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-l-md px-3 py-2 text-sm w-full focus:outline-none focus:border-brand-500">
+                    <button class="bg-brand-600 text-white px-4 py-2 rounded-r-md text-sm font-medium hover:bg-brand-700 transition">Suscribir</button>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-slate-400 text-sm border-t border-slate-200 dark:border-slate-800 pt-8">
+            © 2025 ModumPro. Todos los derechos reservados.
+        </div>
       </footer>
     </div>
   </body>

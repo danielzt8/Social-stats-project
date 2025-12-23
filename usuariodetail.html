@@ -1,240 +1,344 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blank Page</title>
+    <title>Análisis de @CanalEjemplo - Social Stats</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                50: '#fff1f2',
+                100: '#ffe4e6',
+                500: '#f43f5e', // Rose 500
+                600: '#e11d48', // Rose 600
+                700: '#be123c', // Rose 700
+                900: '#881337', // Rose 900
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .dark .glass {
+        background: rgba(17, 24, 39, 0.8);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .odometer {
+        font-variant-numeric: tabular-nums;
+        transition: color 0.2s;
+      }
+    </style>
   </head>
-  <body>
-    <div class="min-h-screen bg-gray-50 text-gray-800 font-sans dark:bg-gray-800 dark:text-gray-300">
-      <!-- Header -->
-      <header class="bg-white shadow sticky top-0 z-50 dark:bg-gray-800">
-        <div
-          class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
-        >
-          <a href="/index.html">
-           <img
-              src="/images/ModumPro FINAL.png"
-              alt="SocialStats Logo"
-              class="h-10 dark:hidden"
-            />
-<img
-              src="/images/ModumPro blanco.png"
-              alt="SocialStats Logo"
-              class="h-10 hidden dark:block"
-            />
+  <body class="bg-slate-50 text-slate-900 font-sans dark:bg-slate-900 dark:text-slate-100 antialiased selection:bg-brand-500 selection:text-white">
+
+     <!-- Header with Glassmorphism -->
+     <header class="fixed w-full top-0 z-50 glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+          <a href="/index.html" class="flex items-center gap-2 group">
+               <div class="relative">
+                  <img
+                    src="/images/ModumPro FINAL.png"
+                    alt="SocialStats Logo"
+                    class="h-10 dark:hidden transition-transform transform group-hover:scale-105"
+                  />
+                  <img
+                    src="/images/ModumPro blanco.png"
+                    alt="SocialStats Logo"
+                    class="h-10 hidden dark:block transition-transform transform group-hover:scale-105"
+                  />
+               </div>
           </a>
-          <nav class="space-x-4">
-            <a href="/index.html" class="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white"
-              >Inicio</a
-            >
-            <a href="/ranking.html" class="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white"
-              >Ranking</a
-            >
-            <a href="/ranking.html" class="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white"
-              >Comparar</a
-            >
-            <a href="#" class="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white">Contacto</a>
+          
+          <nav class="hidden md:flex space-x-8">
+            <a href="/index.html" class="text-sm font-medium text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition-colors">Inicio</a>
+            <a href="/ranking.html" class="text-sm font-medium text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition-colors">Ranking</a>
+            <a href="/comparativa.html" class="text-sm font-medium text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition-colors">Comparar</a>
+            <a href="#" class="text-sm font-medium text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition-colors">Contacto</a>
           </nav>
+  
+          <button class="md:hidden text-slate-600 dark:text-slate-300">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
         </div>
       </header>
 
-      <!-- finHeader -->
-
-      <!-- Banner y perfil -->
-      <section class="relative bg-gray-900 h-64">
+    <div class="pt-20">
+        
+      <!-- Banner y Perfil -->
+      <section class="relative bg-slate-800 h-80 overflow-hidden group">
+         <!-- Banner Image -->
         <img
           src="images/images.jpeg"
           alt="Banner del canal"
-          class="w-full h-full object-cover opacity-80"
+          class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
         />
-        <div class="absolute bottom-4 left-6 flex items-center space-x-4">
-          <div
-            class="w-24 h-24 rounded-full border-4 border-white overflow-hidden"
-          >
-            <img
-              src="/images/IMG_6951.JPG"
-              alt="Foto del canal"
-              class="w-full h-full object-cover"
-            />
-          </div>
-          <div>
-            <h1 class="text-white text-2xl font-bold">@CanalEjemplo</h1>
-            <p class="text-gray-300 text-sm">
-              Creado el 11 de noviembre de 2017
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Métricas generales -->
-      <section class="bg-white py-8 px-4 border-b">
-        <div
-          class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 text-center"
-        >
-          <div class="bg-gray-100 p-4 rounded-lg">
-            <h3 class="text-xl font-semibold">103M</h3>
-            <p class="text-gray-600 text-sm">Suscriptores</p>
-          </div>
-          <div class="bg-gray-100 p-4 rounded-lg">
-            <h3 class="text-xl font-semibold">71B</h3>
-            <p class="text-gray-600 text-sm">Vistas Totales</p>
-          </div>
-          <div class="bg-gray-100 p-4 rounded-lg">
-            <h3 class="text-xl font-semibold">3,146</h3>
-            <p class="text-gray-600 text-sm">Videos Subidos</p>
-          </div>
-          <div class="bg-gray-100 p-4 rounded-lg">
-            <h3 class="text-xl font-semibold">A++</h3>
-            <p class="text-gray-600 text-sm">Calificación Global</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Selector de rango de fechas minimalista y moderno -->
-      <section class="py-6 px-4">
-        <div
-          class="max-w-6xl mx-auto flex justify-between items-center flex-wrap gap-4"
-        >
-          <h2 class="text-lg font-semibold">Estadísticas del canal</h2>
-
-          <!-- Dropdown Selector -->
-          <div class="relative">
-            <button
-              class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg flex items-center space-x-2 hover:bg-gray-200 transition"
-              id="dropdownButton"
-            >
-              <span>Seleccionar rango</span>
-              <svg
-                class="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                ></path>
-              </svg>
-            </button>
-
-            <!-- Dropdown Menu -->
-            <div
-              class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg hidden group-focus:block"
-              id="dropdownMenu"
-            >
-              <ul class="py-2 text-sm text-gray-700">
-                <li
-                  class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                  onclick="selectRange('15 días')"
-                >
-                  15 días
-                </li>
-                <li
-                  class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                  onclick="selectRange('30 días')"
-                >
-                  30 días
-                </li>
-                <li
-                  class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                  onclick="selectRange('3 meses')"
-                >
-                  3 meses
-                </li>
-                <li
-                  class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                  onclick="selectRange('6 meses')"
-                >
-                  6 meses
-                </li>
-                <li
-                  class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                  onclick="selectRange('1 año')"
-                >
-                  1 año
-                </li>
-              </ul>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+        
+        <!-- Profile Info Overlay -->
+        <div class="absolute bottom-0 left-0 w-full px-6 pb-6 pt-20 bg-gradient-to-t from-slate-900/90 to-transparent">
+            <div class="max-w-7xl mx-auto flex items-end gap-6">
+                <div class="relative">
+                    <img
+                        src="/images/IMG_6951.JPG"
+                        alt="Foto del canal"
+                        class="w-32 h-32 rounded-full border-4 border-white dark:border-slate-800 shadow-2xl"
+                    />
+                    <div class="absolute bottom-1 right-1 bg-brand-500 text-white text-xs font-bold px-2 py-0.5 rounded-full border border-white dark:border-slate-800">
+                        A++
+                    </div>
+                </div>
+                <div class="flex-1 mb-2">
+                    <div class="flex items-center gap-2 mb-1">
+                        <h1 class="text-3xl font-bold text-white">@CanalEjemplo</h1>
+                        <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg>
+                    </div>
+                    <div class="flex items-center gap-6 text-slate-300 text-sm">
+                        <span>Entertainment</span>
+                        <span>•</span>
+                        <span>Unido el 11 Nov 2017</span>
+                        <span>•</span>
+                        <span class="flex items-center gap-1"><img src="https://flagcdn.com/w20/us.png" class="h-3" alt="US"> Estados Unidos</span>
+                    </div>
+                </div>
+                 <!-- Corrected Action Buttons -->
+                <div class="hidden md:flex gap-3 mb-3">
+                     <button class="px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg shadow-lg transition-colors flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        Ver en YouTube
+                     </button>
+                    <button class="px-6 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-semibold rounded-lg border border-white/20 transition-colors flex items-center gap-2">
+                        Comparar
+                    </button>
+                </div>
             </div>
-          </div>
         </div>
       </section>
 
-      <!-- Tabla de métricas diarias -->
-      <section class="px-4 pb-16">
-        <div
-          class="max-w-6xl mx-auto bg-white rounded-xl shadow overflow-x-auto"
-        >
-          <table class="min-w-full table-auto text-sm text-left">
-            <thead class="bg-gray-100 text-gray-700 uppercase text-xs">
-              <tr>
-                <th class="px-4 py-3">Fecha</th>
-                <th class="px-4 py-3 text-right">Suscriptores</th>
-                <th class="px-4 py-3 text-right">Vistas</th>
-                <th class="px-4 py-3 text-right">Videos</th>
-                <th class="px-4 py-3 text-right">Ingresos estimados</th>
-              </tr>
-            </thead>
-            <tbody class="text-gray-700 divide-y divide-gray-200">
-              <tr>
-                <td class="px-4 py-2">2025-04-30</td>
-                <td class="px-4 py-2 text-right">+1M</td>
-                <td class="px-4 py-2 text-right">316M</td>
-                <td class="px-4 py-2 text-right">+2</td>
-                <td class="px-4 py-2 text-right">$79K – $1.3M</td>
-              </tr>
-              <tr>
-                <td class="px-4 py-2">2025-04-29</td>
-                <td class="px-4 py-2 text-right">–</td>
-                <td class="px-4 py-2 text-right">345M</td>
-                <td class="px-4 py-2 text-right">+1</td>
-                <td class="px-4 py-2 text-right">$86K – $1.4M</td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- Grid Layout for Stats and Live Count -->
+      <section class="max-w-7xl mx-auto px-6 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Left Column: Key Metrics (2/3 width on desktop) -->
+            <div class="lg:col-span-2 space-y-8">
+                
+                <!-- Summary Cards -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 text-center">
+                        <h3 class="text-2xl font-bold text-slate-800 dark:text-white">103M</h3>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Suscriptores</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 text-center">
+                        <h3 class="text-2xl font-bold text-slate-800 dark:text-white">71B</h3>
+                         <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Vistas Totales</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 text-center">
+                        <h3 class="text-2xl font-bold text-slate-800 dark:text-white">3,146</h3>
+                         <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Videos</p>
+                    </div>
+                     <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 text-center relative overflow-hidden">
+                         <div class="absolute inset-0 bg-brand-500 opacity-5"></div>
+                        <h3 class="text-2xl font-bold text-brand-600">A++</h3>
+                         <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Calificación</p>
+                    </div>
+                </div>
+
+                <!-- Main Chart Section -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 p-6">
+                    <div class="flex justify-between items-center mb-6">
+                         <h2 class="text-lg font-bold text-slate-800 dark:text-white">Crecimiento de Suscriptores</h2>
+                         <select class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm px-3 py-1 outline-none focus:ring-2 focus:ring-brand-500">
+                             <option>Últimos 30 días</option>
+                             <option>Este Año</option>
+                             <option>Histórico</option>
+                         </select>
+                    </div>
+                    <div class="h-80">
+                         <canvas id="detailChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Daily Stats Table -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                    <div class="p-6 border-b border-slate-100 dark:border-slate-700">
+                        <h2 class="text-lg font-bold text-slate-800 dark:text-white">Estadísticas Diarias</h2>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-slate-50 dark:bg-slate-900 text-slate-500 uppercase text-xs font-semibold">
+                                <tr>
+                                    <th class="px-6 py-4">Fecha</th>
+                                    <th class="px-6 py-4 text-right">Suscriptores</th>
+                                    <th class="px-6 py-4 text-right">Vistas</th>
+                                    <th class="px-6 py-4 text-right">Ingresos Est.</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 dark:divide-slate-700 text-slate-700 dark:text-slate-300">
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
+                                    <td class="px-6 py-4">2025-04-30</td>
+                                    <td class="px-6 py-4 text-right text-green-600 font-medium">+100K</td>
+                                    <td class="px-6 py-4 text-right">316M</td>
+                                    <td class="px-6 py-4 text-right">$79K - $1.3M</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
+                                    <td class="px-6 py-4">2025-04-29</td>
+                                    <td class="px-6 py-4 text-right text-green-600 font-medium">+50K</td>
+                                    <td class="px-6 py-4 text-right">345M</td>
+                                    <td class="px-6 py-4 text-right">$86K - $1.4M</td>
+                                </tr>
+                                 <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
+                                    <td class="px-6 py-4">2025-04-28</td>
+                                    <td class="px-6 py-4 text-right text-slate-400 font-medium">--</td>
+                                    <td class="px-6 py-4 text-right">290M</td>
+                                    <td class="px-6 py-4 text-right">$60K - $1.1M</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Live Count & Projections (1/3 width) -->
+            <div class="lg:col-span-1 space-y-8">
+                
+                <!-- Live Count Card -->
+                <div class="bg-gradient-to-br from-red-600 to-red-700 rounded-2xl shadow-xl p-6 text-white text-center relative overflow-hidden group">
+                     <!-- Pulse Effect -->
+                    <div class="absolute -top-12 -right-12 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl group-hover:opacity-20 transition-opacity"></div>
+                    
+                    <div class="flex items-center justify-center gap-2 mb-4 bg-black/20 w-fit mx-auto px-3 py-1 rounded-full backdrop-blur-sm">
+                        <span class="relative flex h-3 w-3">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                        </span>
+                        <span class="text-xs font-semibold tracking-wider uppercase">En Vivo</span>
+                    </div>
+                    
+                    <h3 class="text-sm font-medium text-red-100 uppercase tracking-widest mb-2">Suscriptores</h3>
+                    <div class="text-5xl font-extrabold odometer mb-6" id="liveSubCount">103,450,281</div>
+                    
+                    <p class="text-xs text-red-200">Actualizado cada 2 segundos</p>
+                    <div class="mt-6 pt-6 border-t border-white/10 grid grid-cols-2 gap-4">
+                        <div>
+                             <p class="text-xs text-red-200">Hoy</p>
+                            <p class="font-bold">+12,403</p>
+                        </div>
+                         <div>
+                             <p class="text-xs text-red-200">Última hora</p>
+                            <p class="font-bold">+1,200</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Future Projections -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 p-6">
+                    <h2 class="text-lg font-bold text-slate-800 dark:text-white mb-4">Proyecciones Futuras</h2>
+                    <div class="space-y-6">
+                        <!-- Projection Item -->
+                        <div class="relative pl-4 border-l-2 border-slate-200 dark:border-slate-600">
+                            <div class="absolute -left-[5px] top-0 w-2.5 h-2.5 rounded-full bg-brand-500 ring-4 ring-white dark:ring-slate-800"></div>
+                            <p class="text-xs text-slate-500 uppercase font-semibold">En 2 Meses</p>
+                            <div class="flex justify-between items-end">
+                                <p class="font-bold text-slate-800 dark:text-slate-200">105M Subs</p>
+                                <span class="text-xs text-green-500 font-medium">+1.5M</span>
+                            </div>
+                        </div>
+                        <!-- Projection Item -->
+                        <div class="relative pl-4 border-l-2 border-slate-200 dark:border-slate-600">
+                             <div class="absolute -left-[5px] top-0 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-600"></div>
+                            <p class="text-xs text-slate-500 uppercase font-semibold">En 1 Año</p>
+                             <div class="flex justify-between items-end">
+                                <p class="font-bold text-slate-800 dark:text-slate-200">118M Subs</p>
+                                <span class="text-xs text-green-500 font-medium">+15M</span>
+                            </div>
+                        </div>
+                         <!-- Projection Item -->
+                        <div class="relative pl-4 border-l-2 border-slate-200 dark:border-slate-600">
+                             <div class="absolute -left-[5px] top-0 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-600"></div>
+                            <p class="text-xs text-slate-500 uppercase font-semibold">En 5 Años</p>
+                             <div class="flex justify-between items-end">
+                                <p class="font-bold text-slate-800 dark:text-slate-200">180M Subs</p>
+                                <span class="text-xs text-green-500 font-medium">+77M</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="w-full mt-6 py-2 text-sm text-brand-600 font-medium hover:bg-brand-50 rounded-lg transition-colors">
+                        Ver análisis detallado
+                    </button>
+                </div>
+
+                 <!-- Audience Demographics (Mock) -->
+                 <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 p-6">
+                    <h2 class="text-lg font-bold text-slate-800 dark:text-white mb-4">Audiencia</h2>
+                     <div class="space-y-3">
+                         <div>
+                             <div class="flex justify-between text-xs mb-1">
+                                 <span class="text-slate-500">Hombres</span>
+                                 <span class="text-slate-800 dark:text-white font-medium">65%</span>
+                             </div>
+                             <div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-1.5">
+                                 <div class="bg-blue-500 h-1.5 rounded-full" style="width: 65%"></div>
+                             </div>
+                         </div>
+                          <div>
+                             <div class="flex justify-between text-xs mb-1">
+                                 <span class="text-slate-500">Mujeres</span>
+                                 <span class="text-slate-800 dark:text-white font-medium">35%</span>
+                             </div>
+                             <div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-1.5">
+                                 <div class="bg-pink-500 h-1.5 rounded-full" style="width: 35%"></div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+            </div>
         </div>
       </section>
 
-      <!-- Detail Chart Container -->
-      <section class="max-w-6xl mx-auto py-6 px-4">
-        <h2 class="text-lg font-semibold mb-4">
-          Detail Chart - Crecimiento de Suscriptores
-        </h2>
-        <div class="bg-white rounded-lg shadow p-4">
-          <canvas id="detailChart" width="400" height="200"></canvas>
-        </div>
-      </section>
-
-      <!-- Incluye Chart.js CDN -->
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-      <!-- Script para inicializar el Detail Chart -->
+      <!-- Initialize Scripts -->
       <script>
+        // Chart Configuration
         const ctx = document.getElementById("detailChart").getContext("2d");
+        const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, 'rgba(244, 63, 94, 0.2)'); // Brand color fade
+        gradient.addColorStop(1, 'rgba(244, 63, 94, 0)');
+
         const detailChart = new Chart(ctx, {
-          type: "line", // Tipo de gráfico
+          type: "line",
           data: {
-            labels: [
-              "Enero",
-              "Febrero",
-              "Marzo",
-              "Abril",
-              "Mayo",
-              "Junio",
-              "Julio",
-              "Agosto",
-            ],
+            labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago"],
             datasets: [
               {
-                label: "Suscriptores Ganados",
-                data: [200, 250, 300, 700, 500, 800, 600, 900],
-                borderColor: "#ef4444", // Rojo para resaltar
-                backgroundColor: "rgba(239, 68, 68, 0.1)",
-                tension: 0.4, // Curva suave
+                label: "Suscriptores (Millones)",
+                data: [100, 100.5, 101.2, 101.8, 102.3, 102.9, 103.1, 103.4],
+                borderColor: "#f43f5e",
+                backgroundColor: gradient,
+                borderWidth: 3,
+                tension: 0.4,
+                pointRadius: 4,
+                pointBackgroundColor: "#ffffff",
+                pointBorderColor: "#f43f5e",
+                pointBorderWidth: 2,
                 fill: true,
               },
             ],
@@ -242,64 +346,84 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                    backgroundColor: 'rgba(17, 24, 39, 0.9)',
+                    titleColor: '#fff',
+                    bodyColor: '#cbd5e1',
+                    borderColor: 'rgba(255,255,255,0.1)',
+                    borderWidth: 1,
+                    padding: 10,
+                }
+            },
             scales: {
               y: {
-                beginAtZero: true,
-                grid: {
-                  color: "#e5e7eb", // Gris claro
-                },
-                ticks: {
-                  color: "#374151", // Gris oscuro
-                },
+                grid: { color: document.documentElement.classList.contains('dark') ? '#334155' : '#f1f5f9' },
+                ticks: { color: '#64748b' }
               },
               x: {
-                grid: {
-                  display: false,
-                },
-                ticks: {
-                  color: "#374151", // Gris oscuro
-                },
+                grid: { display: false },
+                ticks: { color: '#64748b' }
               },
             },
-            plugins: {
-              legend: {
-                display: true,
-                labels: {
-                  color: "#374151", // Gris oscuro
-                },
-              },
-              tooltip: {
-                backgroundColor: "#1f2937", // Fondo oscuro
-                titleColor: "#f9fafb", // Texto claro
-                bodyColor: "#f9fafb", // Texto claro
-              },
+            interaction: {
+                intersect: false,
+                mode: 'index',
             },
           },
         });
+
+        // Mock Live Counter Update
+        const liveCounter = document.getElementById('liveSubCount');
+        let currentCount = 103450281;
+
+        setInterval(() => {
+            const change = Math.floor(Math.random() * 5); // Add 0-4 subs randomly
+            currentCount += change;
+            liveCounter.innerText = currentCount.toLocaleString();
+            
+            // Subtle pulse animation class toggle could go here
+        }, 2000);
       </script>
 
-      <!-- Script para controlar el dropdown -->
-      <script>
-        // Manejo del dropdown de forma moderna
-        document
-          .getElementById("dropdownButton")
-          .addEventListener("click", function () {
-            const dropdownMenu = document.getElementById("dropdownMenu");
-            dropdownMenu.classList.toggle("hidden");
-          });
-
-        // Función para seleccionar rango
-        function selectRange(range) {
-          document
-            .getElementById("dropdownButton")
-            .querySelector("span").innerText = range;
-          document.getElementById("dropdownMenu").classList.add("hidden");
-        }
-      </script>
-
-      <!-- Footer -->
-      <footer class="bg-gray-100 py-6 text-center text-sm text-gray-500">
-        © 2025 SocialStats. Todos los derechos reservados.
+       <!-- Footer -->
+      <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+                <img src="/images/ModumPro FINAL.png" class="h-8 mb-4 opacity-80 dark:hidden" alt="Logo">
+                <img src="/images/ModumPro blanco.png" class="h-8 mb-4 hidden dark:block" alt="Logo">
+                <p class="text-slate-500 text-sm">
+                    La herramienta líder de análisis para creadores de contenido.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold text-slate-900 dark:text-white mb-4">Plataforma</h4>
+                <ul class="space-y-2 text-sm text-slate-500">
+                    <li><a href="#" class="hover:text-brand-600 transition">YouTube</a></li>
+                    <li><a href="#" class="hover:text-brand-600 transition">Instagram</a></li>
+                </ul>
+            </div>
+             <div>
+                <h4 class="font-bold text-slate-900 dark:text-white mb-4">Compañía</h4>
+                <ul class="space-y-2 text-sm text-slate-500">
+                    <li><a href="#" class="hover:text-brand-600 transition">Sobre Nosotros</a></li>
+                    <li><a href="#" class="hover:text-brand-600 transition">Privacidad</a></li>
+                </ul>
+            </div>
+             <div>
+                <h4 class="font-bold text-slate-900 dark:text-white mb-4">Boletín</h4>
+                <div class="flex">
+                    <input type="email" placeholder="Tu email" class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-l-md px-3 py-2 text-sm w-full focus:outline-none focus:border-brand-500">
+                    <button class="bg-brand-600 text-white px-4 py-2 rounded-r-md text-sm font-medium hover:bg-brand-700 transition">Suscribir</button>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-slate-400 text-sm border-t border-slate-200 dark:border-slate-800 pt-8">
+            © 2025 ModumPro. Todos los derechos reservados.
+        </div>
       </footer>
     </div>
   </body>

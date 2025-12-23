@@ -1,107 +1,172 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Comparar Canales - SocialStats</title>
-    <!-- Tailwind CSS CDN -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparar Canales - Social Stats</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="bg-gray-50 font-sans">
-    <!-- Header -->
-    <header class="bg-white shadow sticky top-0 z-50">
-      <div
-        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
-      >
-        <a href="/index.html">
-          <img
-            src="/images/ModumPro FINAL.png"
-            alt="SocialStats Logo"
-            class="h-10"
-          />
-        </a>
-        <nav class="space-x-4">
-          <a href="/index.html" class="text-gray-600 hover:text-black"
-            >Inicio</a
-          >
-          <a href="/ranking.html" class="text-gray-600 hover:text-black"
-            >Ranking</a
-          >
-          <a href="/comparativa.html" class="text-gray-600 hover:text-black"
-            >Comparar</a
-          >
-          <a href="#" class="text-gray-600 hover:text-black">Contacto</a>
-        </nav>
-      </div>
-    </header>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                50: '#fff1f2',
+                100: '#ffe4e6',
+                500: '#f43f5e', // Rose 500
+                600: '#e11d48', // Rose 600
+                700: '#be123c', // Rose 700
+                900: '#881337', // Rose 900
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .dark .glass {
+        background: rgba(17, 24, 39, 0.8);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans dark:bg-slate-900 dark:text-slate-100 antialiased selection:bg-brand-500 selection:text-white">
 
-    <!-- Comparar Creadores (Horizontal) -->
-    <section class="max-w-6xl mx-auto my-6 p-4 bg-white rounded-lg shadow-md">
-      <h2 class="text-xl font-semibold mb-4">Comparar Creadores</h2>
-      <div class="flex overflow-x-auto space-x-4" id="creatorsContainer">
-        <!-- Canal 1 -->
-        <div
-          class="flex items-center space-x-4 bg-gray-100 p-4 rounded-lg min-w-[300px]"
-        >
-          <div class="w-16 h-16 bg-gray-200 rounded-full overflow-hidden">
-            <img
-              src="https://via.placeholder.com/150"
-              alt="Canal 1"
-              class="w-full h-full object-cover"
-            />
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold">@CanalEjemplo1</h3>
-            <p class="text-sm text-gray-600">104M Suscriptores</p>
-            <p class="text-sm text-gray-600">75B Vistas</p>
-            <p class="text-sm text-gray-600">3.2K Videos</p>
-          </div>
-        </div>
-
-        <!-- Botón para agregar canal -->
-        <button
-          onclick="showSearch()"
-          class="flex items-center justify-center bg-gray-100 p-4 rounded-lg min-w-[300px] text-gray-500 hover:bg-gray-200 transition"
-        >
-          <span>+ Agregar otro canal</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- Modal de Búsqueda de Canal -->
-    <div
-      id="searchModal"
-      class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center"
-    >
-      <div class="bg-white p-6 rounded-lg max-w-sm w-full">
-        <h3 class="text-lg font-semibold mb-4">Buscar Canal</h3>
-        <input
-          type="text"
-          placeholder="Ingresa el nombre del canal..."
-          class="w-full p-2 border rounded mb-4"
-          id="searchInput"
-        />
-        <div class="flex justify-end space-x-2">
-          <button
-            onclick="closeSearch()"
-            class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
-          >
-            Cancelar
-          </button>
-          <button
-            onclick="addChannel()"
-            class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-          >
-            Agregar
+     <!-- Header with Glassmorphism -->
+     <header class="fixed w-full top-0 z-50 glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+          <a href="/index.html" class="flex items-center gap-2 group">
+               <div class="relative">
+                  <img
+                    src="/images/ModumPro FINAL.png"
+                    alt="SocialStats Logo"
+                    class="h-10 dark:hidden transition-transform transform group-hover:scale-105"
+                  />
+                  <img
+                    src="/images/ModumPro blanco.png"
+                    alt="SocialStats Logo"
+                    class="h-10 hidden dark:block transition-transform transform group-hover:scale-105"
+                  />
+               </div>
+          </a>
+          
+          <nav class="hidden md:flex space-x-8">
+            <a href="/index.html" class="text-sm font-medium text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition-colors">Inicio</a>
+            <a href="/ranking.html" class="text-sm font-medium text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition-colors">Ranking</a>
+            <a href="/comparativa.html" class="text-sm font-medium text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition-colors">Comparar</a>
+            <a href="#" class="text-sm font-medium text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition-colors">Contacto</a>
+          </nav>
+  
+          <button class="md:hidden text-slate-600 dark:text-slate-300">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
           </button>
         </div>
+      </header>
+
+      <div class="pt-28 pb-12 px-6">
+        <div class="max-w-7xl mx-auto mb-10 text-center">
+           <span class="text-brand-600 font-semibold tracking-wide uppercase text-xs bg-brand-50 dark:bg-brand-900/20 px-3 py-1 rounded-full mb-3 inline-block">Modo Vs</span>
+          <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">Comparar Creadores</h1>
+          <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">Pon cara a cara las estadísticas de tus canales favoritos y descubre quién está creciendo más rápido.</p>
+        </div>
+      
+        <!-- Comparison Container -->
+        <div class="max-w-7xl mx-auto overflow-x-auto pb-8" id="creatorsContainer">
+            <div class="flex gap-6 min-w-max justify-center">
+                
+                <!-- Card 1 -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 w-80 shadow-sm border border-slate-100 dark:border-slate-700 relative group hover:shadow-xl transition-all duration-300">
+                    <div class="absolute -top-3 -right-3 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">Ganador</div>
+                    <div class="flex flex-col items-center mb-6">
+                        <img src="/images/IMG_6951.JPG" alt="Canal 1" class="w-24 h-24 rounded-full object-cover mb-4 ring-4 ring-slate-50 dark:ring-slate-700"/>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">@CanalTop1</h3>
+                        <span class="text-xs text-slate-500">YouTube</span>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-700">
+                            <span class="text-sm text-slate-500">Suscriptores</span>
+                            <span class="font-bold text-slate-800 dark:text-slate-200">103M</span>
+                        </div>
+                         <div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-700">
+                            <span class="text-sm text-slate-500">Vistas</span>
+                            <span class="font-bold text-slate-800 dark:text-slate-200 text-brand-600">71B</span>
+                        </div>
+                         <div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-700">
+                            <span class="text-sm text-slate-500">Videos</span>
+                            <span class="font-bold text-slate-800 dark:text-slate-200">3.1K</span>
+                        </div>
+                         <div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-700">
+                            <span class="text-sm text-slate-500">Grade</span>
+                            <span class="font-bold text-brand-600">A++</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VS Badge -->
+                <div class="flex items-center justify-center">
+                    <div class="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center font-black text-slate-400 italic text-xl shadow-inner">
+                        VS
+                    </div>
+                </div>
+
+                 <!-- Add Button -->
+                <button onclick="showSearch()" class="w-80 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-600 flex flex-col items-center justify-center text-slate-400 hover:text-brand-500 hover:border-brand-500 hover:bg-brand-50/50 dark:hover:bg-brand-900/10 transition-all cursor-pointer group p-6">
+                    <div class="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                    </div>
+                    <span class="font-medium">Agregar Canal</span>
+                </button>
+
+            </div>
+        </div>
       </div>
+      
+       <!-- Search Modal -->
+    <div id="searchModal" class="fixed inset-0 z-[100] hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeSearch()"></div>
+        
+        <!-- Modal Content -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md p-4">
+             <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden scale-100 transition-transform">
+                 <div class="p-6">
+                     <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-1">Buscar Canal</h3>
+                     <p class="text-sm text-slate-500 mb-6">Ingresa el nombre de usuario o URL del canal.</p>
+                     
+                     <div class="relative">
+                         <input type="text" id="searchInput" placeholder="Ej. @MrBeast" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl py-3 pl-10 pr-4 outline-none focus:ring-2 focus:ring-brand-500 transition-all" autofocus>
+                         <svg class="w-5 h-5 text-slate-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                     </div>
+                 </div>
+                 <div class="bg-slate-50 dark:bg-slate-900/50 px-6 py-4 flex justify-end gap-3">
+                     <button onclick="closeSearch()" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white transition-colors">Cancelar</button>
+                     <button onclick="addChannel()" class="px-6 py-2 text-sm font-medium bg-brand-600 text-white rounded-lg hover:bg-brand-700 shadow-lg shadow-brand-500/30 transition-all">Agregar</button>
+                 </div>
+             </div>
+        </div>
     </div>
 
-    <!-- Script para agregar canales -->
+    <!-- Script -->
     <script>
       function showSearch() {
-        document.getElementById("searchModal").classList.remove("hidden");
+        const modal = document.getElementById("searchModal");
+        modal.classList.remove("hidden");
+        // Simple animation logic would normally go here (e.g. adding 'opacity-100' class)
       }
 
       function closeSearch() {
@@ -112,29 +177,85 @@
         const channelName = document.getElementById("searchInput").value.trim();
         if (channelName === "") return;
 
+        // In a real app, this would fetch data. Here we mock it visually.
         const container = document.getElementById("creatorsContainer");
-        const newChannel = document.createElement("div");
-        newChannel.className =
-          "flex items-center space-x-4 bg-gray-100 p-4 rounded-lg min-w-[300px]";
-        newChannel.innerHTML = `
-        <div class='w-16 h-16 bg-gray-200 rounded-full overflow-hidden'>
-          <img src='https://via.placeholder.com/150' alt='Nuevo Canal' class='w-full h-full object-cover'>
-        </div>
-        <div>
-          <h3 class='text-lg font-semibold'>@${channelName}</h3>
-          <p class='text-sm text-gray-600'>-- Suscriptores</p>
-          <p class='text-sm text-gray-600'>-- Vistas</p>
-          <p class='text-sm text-gray-600'>-- Videos</p>
-        </div>
-      `;
-        container.insertBefore(newChannel, container.lastElementChild);
+        const listDiv = container.querySelector('div'); // The flex container
+        const addButton = listDiv.lastElementChild; // The button
+        
+        // Mock Data
+        const newCard = document.createElement("div");
+        newCard.className = "bg-white dark:bg-slate-800 rounded-2xl p-6 w-80 shadow-sm border border-slate-100 dark:border-slate-700 relative group hover:shadow-xl transition-all duration-300";
+        newCard.innerHTML = `
+            <div class="flex flex-col items-center mb-6">
+                <img src="https://via.placeholder.com/150" alt="New Channel" class="w-24 h-24 rounded-full object-cover mb-4 ring-4 ring-slate-50 dark:ring-slate-700"/>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white">@${channelName}</h3>
+                <span class="text-xs text-slate-500">YouTube</span>
+            </div>
+            <div class="space-y-4">
+                 <div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-700">
+                    <span class="text-sm text-slate-500">Suscriptores</span>
+                    <span class="font-bold text-slate-800 dark:text-slate-200">--</span>
+                </div>
+                 <div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-700">
+                    <span class="text-sm text-slate-500">Vistas</span>
+                    <span class="font-bold text-slate-800 dark:text-slate-200">--</span>
+                </div>
+                 <div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-700">
+                    <span class="text-sm text-slate-500">Videos</span>
+                    <span class="font-bold text-slate-800 dark:text-slate-200">--</span>
+                </div>
+                 <div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-700">
+                    <span class="text-sm text-slate-500">Grade</span>
+                    <span class="font-bold text-slate-400">B</span>
+                </div>
+            </div>
+        `;
+        
+        // Insert VS if needed (simplified logic)
+        const vsBadge = document.createElement("div");
+        vsBadge.className = "flex items-center justify-center";
+        vsBadge.innerHTML = `<div class="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center font-black text-slate-400 italic text-xl shadow-inner">VS</div>`;
+        
+        // Insert before the button
+        listDiv.insertBefore(vsBadge, addButton);
+        listDiv.insertBefore(newCard, addButton);
+        
         closeSearch();
+        document.getElementById("searchInput").value = "";
       }
     </script>
 
-    <!-- Footer -->
-    <footer class="bg-gray-100 py-6 text-center text-sm text-gray-500">
-      <p>© 2025 SocialStats. Todos los derechos reservados.</p>
-    </footer>
-  </body>
+       <!-- Footer -->
+       <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+                <img src="/images/ModumPro FINAL.png" class="h-8 mb-4 opacity-80 dark:hidden" alt="Logo">
+                <img src="/images/ModumPro blanco.png" class="h-8 mb-4 hidden dark:block" alt="Logo">
+            </div>
+            <div>
+                <h4 class="font-bold text-slate-900 dark:text-white mb-4">Plataforma</h4>
+                <ul class="space-y-2 text-sm text-slate-500">
+                    <li><a href="#" class="hover:text-brand-600 transition">YouTube</a></li>
+                </ul>
+            </div>
+             <div>
+                <h4 class="font-bold text-slate-900 dark:text-white mb-4">Compañía</h4>
+                <ul class="space-y-2 text-sm text-slate-500">
+                    <li><a href="#" class="hover:text-brand-600 transition">Sobre Nosotros</a></li>
+                </ul>
+            </div>
+             <div>
+                <h4 class="font-bold text-slate-900 dark:text-white mb-4">Boletín</h4>
+                <div class="flex">
+                    <input type="email" placeholder="Tu email" class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-l-md px-3 py-2 text-sm w-full focus:outline-none focus:border-brand-500">
+                    <button class="bg-brand-600 text-white px-4 py-2 rounded-r-md text-sm font-medium hover:bg-brand-700 transition">Suscribir</button>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-slate-400 text-sm border-t border-slate-200 dark:border-slate-800 pt-8">
+            © 2025 ModumPro. Todos los derechos reservados.
+        </div>
+      </footer>
+    </div>
+</body>
 </html>
